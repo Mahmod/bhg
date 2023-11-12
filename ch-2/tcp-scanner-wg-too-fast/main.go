@@ -4,9 +4,11 @@ import (
 	"fmt"
 	"net"
 	"sync"
+	"time"
 )
 
 func main() {
+	start := time.Now()
 	var wg sync.WaitGroup
 	for i := 1; i <= 1024; i++ {
 		wg.Add(1)
@@ -22,4 +24,6 @@ func main() {
 		}(i)
 	}
 	wg.Wait()
+	elapsed := time.Since(start)
+	fmt.Printf("The script took %s to run.\n", elapsed)
 }

@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"sync"
+	"time"
 )
 
 func worker(ports chan int, wg *sync.WaitGroup) {
@@ -13,6 +14,7 @@ func worker(ports chan int, wg *sync.WaitGroup) {
 }
 
 func main() {
+	start := time.Now()
 	ports := make(chan int, 100)
 	var wg sync.WaitGroup
 	for i := 0; i < cap(ports); i++ {
@@ -24,4 +26,6 @@ func main() {
 	}
 	wg.Wait()
 	close(ports)
+	elapsed := time.Since(start)
+	fmt.Printf("The script took %s to run.\n", elapsed)
 }

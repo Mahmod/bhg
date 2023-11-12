@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net"
 	"sort"
+	"time"
 )
 
 func worker(ports, results chan int) {
@@ -20,6 +21,7 @@ func worker(ports, results chan int) {
 }
 
 func main() {
+	start := time.Now()
 	ports := make(chan int, 100)
 	results := make(chan int)
 	var openports []int
@@ -47,4 +49,6 @@ func main() {
 	for _, port := range openports {
 		fmt.Printf("%d open\n", port)
 	}
+	elapsed := time.Since(start)
+	fmt.Printf("The script took %s to run.\n", elapsed)
 }
