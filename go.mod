@@ -9,6 +9,7 @@ require (
 	github.com/miekg/dns v1.1.56 // indirect
 	github.com/sirupsen/logrus v1.9.3 // indirect
 	github.com/urfave/negroni v1.0.0 // indirect
+	golang.org/x/crypto v0.14.0
 	google.golang.org/appengine v1.6.8 // indirect
 	gopkg.in/vmihailenco/msgpack.v2 v2.9.2 // indirect
 )
